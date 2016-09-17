@@ -1,0 +1,4 @@
+[
+"http://localhost:8080", 
+"http://localhost:8080/?wicket:bookmarkablePage=:fi.solita.edvard.ui.page.principal.PrincipalsPage"
+]

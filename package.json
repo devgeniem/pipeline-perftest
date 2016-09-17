@@ -1,0 +1,14 @@
+{
+  "name": "perftest",
+  "version": "1.0.0",
+  "description": "",
+  "main": "perftest.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "geniem",
+  "license": "MIT",
+  "dependencies": {
+    "phantomas": "^1.16.0"
+  }
+}

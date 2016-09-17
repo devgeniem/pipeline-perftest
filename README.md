@@ -29,5 +29,5 @@ Writing limit-keys to this file overrides any specified in `limits_default`. Thi
 
 ## Running
 ```
-node perftest
+node pipeline-perftest
 ```

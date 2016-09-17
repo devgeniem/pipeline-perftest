@@ -1,4 +1,5 @@
 # Pipeline Performace Tester
+[![License](http://img.shields.io/:license-mit-blue.svg?style=flat-square)](http://badges.mit-license.org)
 This is a work in progress tool to run phantomas tests in CI with controllable targets and criteria for passing.
 
 ##Dependencies

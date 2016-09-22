@@ -32,3 +32,4 @@ Writing limit-keys to this file overrides any specified in `limits_default`. Thi
 ```
 node pipeline-perftest
 ```
+Exit code is 0 for passed tests, 1 for failed.

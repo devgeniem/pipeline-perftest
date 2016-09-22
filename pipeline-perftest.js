@@ -3,7 +3,7 @@ var fs = require('fs');
 
 var performTest = function(url, limits){
     return new Promise((resolve, reject) => {
-        phantomas(url, {"analyze-css": true, "timeout": 30}, function(err, json, results) {
+        phantomas(url, {"analyze-css": true, "timeout": 60}, function(err, json, results) {
             if(err) reject(err);
             var failures = [];
             var result = json.metrics;

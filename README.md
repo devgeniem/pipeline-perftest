@@ -33,3 +33,5 @@ Writing limit-keys to this file overrides any specified in `limits_default`. Thi
 node pipeline-perftest
 ```
 Exit code is 0 for passed tests, 1 for failed.
+
+Explanations for the failures are listed in the page for [Phantomas](https://github.com/macbre/phantomas)

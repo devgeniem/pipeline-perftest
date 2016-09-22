@@ -1,19 +1,20 @@
 var phantomas = require('phantomas');
 var fs = require('fs');
 
-var performTest = function(url, limits){
+var performTest = function(url, config){
     return new Promise((resolve, reject) => {
         phantomas(url, {"analyze-css": true, "timeout": 60}, function(err, json, results) {
             if(err) reject(err);
             var failures = [];
             var result = json.metrics;
-            for(var prop in limits){
-                if(limits[prop] != -1 && result[prop] > limits[prop]){
+            var tresholds = config.tresholds;
+            for(var prop in tresholds){
+                if(tresholds[prop] != -1 && result[prop] > tresholds[prop]){
                     failures.push(
                         {"url": url, 
                         "testCase": prop, 
                         "result": result[prop],
-                        "limit": limits[prop],
+                        "limit": tresholds[prop],
                         "offenders": json.offenders[prop]});
                 }
             }
@@ -29,8 +30,8 @@ var readConfiguration = function(testFunction){
         fs.readFile('tresholds_override.json', 'utf8', function(err, data) {
             if (err) throw err;
             var override = JSON.parse(data);
-            for(var prop in override){
-                config[prop] = override[prop];
+            for(var prop in override.tresholds){
+                config.tresholds[prop] = override.tresholds[prop];
             }
             readTargetUrls(function(urls){
                 testFunction(config, urls);
@@ -46,9 +47,9 @@ var readTargetUrls = function(callback){
     });
 }
 
-var main = function(limits, urls){
+var main = function(config, urls){
     console.log("Running performance test suite");
-    var promises = urls.map(url => {return performTest(url, limits)});
+    var promises = urls.map(url => {return performTest(url, config)});
     Promise.all(promises)
         .then(failuresByUrl => {
             var failures = failuresByUrl.reduce(

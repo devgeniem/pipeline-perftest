@@ -21,12 +21,13 @@ Should contain an array holding the (full) URLs to run the tests against.
 ```
 tresholds_default.json
 ```
-Holds all testable variables with sensible *(TODO)* default values. The results for phantomas tests must be equal or less than the tresholds specified to pass.
+Holds all testable parameters with sensible *(TODO)* default values. Has a field `tresholds` which contains an object with testable fields and values.
+The results for phantomas tests must be equal or less than the tresholds specified to pass.
 
 ```
 tresholds_override.json
 ```
-Writing limit-keys to this file overrides any specified in `tresholds_default`. This is intended for project-specific settings.
+Writing treshold-keys to this file overrides any specified in `tresholds_default`. This is intended for project-specific settings.
 
 ## Running
 ```

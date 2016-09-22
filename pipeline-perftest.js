@@ -6,9 +6,10 @@ var performTest = function(url, limits){
         phantomas(url, {"analyze-css": true, "timeout": 60}, function(err, json, results) {
             if(err) reject(err);
             var failures = [];
+            console.log(json);
             var result = json.metrics;
             for(var prop in limits){
-                if(result[prop] > limits[prop]){
+                if(limits[prop] != -1 && result[prop] > limits[prop]){
                     failures.push({"url": url, "testCase": prop, "result": result[prop], "limit": limits[prop]});
                 }
             }

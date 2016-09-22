@@ -19,14 +19,14 @@ target_urls.json
 Should contain an array holding the (full) URLs to run the tests against.
 
 ```
-limits_default.json
+tresholds_default.json
 ```
 Holds all testable variables with sensible *(TODO)* default values. The results for phantomas tests must be equal or less than the tresholds specified to pass.
 
 ```
-limits_override.json
+tresholds_override.json
 ```
-Writing limit-keys to this file overrides any specified in `limits_default`. This is intended for project-specific settings.
+Writing limit-keys to this file overrides any specified in `tresholds_default`. This is intended for project-specific settings.
 
 ## Running
 ```

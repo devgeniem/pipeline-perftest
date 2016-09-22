@@ -23,10 +23,10 @@ var performTest = function(url, limits){
 }
 
 var readConfiguration = function(testFunction){
-    fs.readFile('limits_default.json', 'utf8', function(err, data) {
+    fs.readFile('tresholds_default.json', 'utf8', function(err, data) {
         if (err) throw err;
         var config = JSON.parse(data);
-        fs.readFile('limits_override.json', 'utf8', function(err, data) {
+        fs.readFile('tresholds_override.json', 'utf8', function(err, data) {
             if (err) throw err;
             var override = JSON.parse(data);
             for(var prop in override){

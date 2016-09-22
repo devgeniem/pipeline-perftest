@@ -55,8 +55,8 @@ var main = function(limits, urls){
             });
             var passed = failures.length === 0;
             console.log(passed 
-                ? "Tests successful!" 
-                : "Tests FAILED: " + failures.length);
+                ? "Performance tests successful!" 
+                : "Performance tests FAILED: " + failures.length);
             process.exit(passed ? 0 : 1)
         })
         .catch(error => { 

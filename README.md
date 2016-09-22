@@ -27,10 +27,10 @@ Field `tresholds` which contains an object with testable fields and values.
 The results for phantomas tests must be equal or less than the tresholds specified to pass. Any field with `-1` in value is considered ignored.
 
 Field `advancedTests` is an array that contains more refined test cases. Tests are defined as objects with following fields:
-- name
-- method (currently supported: `eq`, `nop`)
-- param1
-- param2
+- `name`
+- `method` (currently supported: `eq`, `nop`)
+- `param1`
+- `param2`
 The behaviour depends on the method field of the test case. Test for `eq` tests that `param1` and `param2` in the result are equal. 
 Expect more test methods in the future.
 
@@ -45,6 +45,6 @@ This is intended for project-specific settings.
 ```
 node pipeline-perftest
 ```
-Exit code is 0 for passed tests, 1 for failed.
+Exit code is `0` for passed tests, `1` for failed.
 
 Explanations for the failures are listed in the page for [Phantomas](https://github.com/macbre/phantomas)

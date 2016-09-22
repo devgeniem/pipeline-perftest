@@ -14,13 +14,43 @@ var performTest = function(url, config){
                         {"url": url, 
                         "testCase": prop, 
                         "result": result[prop],
-                        "limit": tresholds[prop],
+                        "treshold": tresholds[prop],
                         "offenders": json.offenders[prop]});
+                }
+            }
+            for(var i in config.advancedTests){
+                var test = config.advancedTests[i];
+                //TODO: expand this
+                switch(test.method){
+                    case("eq"):{
+                        if(result[test.param1] != result[test.param2]){
+                            var fail = {"url": url, "testCase": test.name};
+                            fail[test.param1] = result[test.param1];
+                            fail[test.param2] = result[test.param2];
+                            failures.push(fail);
+                        }
+                        break;
+                    }
+                    case("nop"): break;
+                    default: console.log("WARNING: Not supported test method ignored: " + test.method); break;
                 }
             }
             resolve(failures);
         });
     });
+}
+
+var handleAdvancedTestOverride = function(test, config){
+    var overrode = false;
+    for(var j in config.advancedTests){
+        if(config.advancedTests[j].name === test.name){
+            config.advancedTests[j] = test;
+            overrode = true;
+        }
+    }
+    if(!overrode){
+        config.advancedTests.push(test);
+    }
 }
 
 var readConfiguration = function(testFunction){
@@ -32,6 +62,9 @@ var readConfiguration = function(testFunction){
             var override = JSON.parse(data);
             for(var prop in override.tresholds){
                 config.tresholds[prop] = override.tresholds[prop];
+            }
+            for(var i in override.advancedTests){
+                handleAdvancedTestOverride(override.advancedTests[i], config);
             }
             readTargetUrls(function(urls){
                 testFunction(config, urls);

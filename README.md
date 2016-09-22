@@ -21,13 +21,25 @@ Should contain an array holding the (full) URLs to run the tests against.
 ```
 tresholds_default.json
 ```
-Holds all testable parameters with sensible *(TODO)* default values. Has a field `tresholds` which contains an object with testable fields and values.
-The results for phantomas tests must be equal or less than the tresholds specified to pass.
+Holds all testable parameters with sensible *(TODO)* default values. 
+
+Field `tresholds` which contains an object with testable fields and values.
+The results for phantomas tests must be equal or less than the tresholds specified to pass. Any field with `-1` in value is considered ignored.
+
+Field `advancedTests` is an array that contains more refined test cases. Tests are defined as objects with following fields:
+- name
+- method (currently supported: `eq`, `nop`)
+- param1
+- param2
+The behaviour depends on the method field of the test case. Test for `eq` tests that `param1` and `param2` in the result are equal. 
+Expect more test methods in the future.
 
 ```
 tresholds_override.json
 ```
-Writing treshold-keys to this file overrides any specified in `tresholds_default`. This is intended for project-specific settings.
+Writing treshold-keys to this file overrides any specified in `tresholds_default`. 
+`advancedTests`-array will override any default test method with the same name, or add a new one.
+This is intended for project-specific settings.
 
 ## Running
 ```

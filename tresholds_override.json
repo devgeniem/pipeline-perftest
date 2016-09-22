@@ -1,3 +1,7 @@
 {
-"thresholds": { "biggestLatency": -1}
+"thresholds": { "biggestLatency": -1},
+"advancedTests": [
+    { "name": "Override demo", "method": "eq", "param1": "requests", "param2": "gzipRequests" },
+    { "name": "All requests should be https", "method": "eq", "param1": "requests", "param2": "httpsRequests" }
+]
 }

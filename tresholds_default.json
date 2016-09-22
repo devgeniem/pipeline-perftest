@@ -1,7 +1,7 @@
 {
 "tresholds": {
-    "requests": 20,
-    "gzipRequests": 20,
+    "requests": -1,
+    "gzipRequests": -1,
     "postRequests": 0,
     "httpsRequests": 20,
     "notFound": 0,
@@ -173,5 +173,11 @@
     "smallestLatency": 10,
     "biggestLatency": 150,
     "medianResponse": 200,
-    "medianLatency": 150}
+    "medianLatency": 150},
+"advancedTests": [
+    { "name": "All requests must be gzipped", "method": "eq", "param1": "requests", "param2": "gzipRequests" },
+    { "name": "Should be ignored", "method": "nop" },
+    { "name": "Should print warning", "method": "gte" },
+    { "name": "Override demo", "method": "nop" }
+]
 }
